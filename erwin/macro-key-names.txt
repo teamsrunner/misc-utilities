@@ -1,0 +1,8 @@
+$KeyName
+---
+$Switch(*Subatt('KeyType,1,2))
+{
+    $Choose (A) {x_TableName_pk}
+    $Choose(AK) {x_TableName_ak_%If(*==(0,%/(Subatt('KeyType,3,4),10))) {*Concat(0,*Subatt('KeyType,3,4))} %else {Subatt('KeyType,3,4)}}
+    $Default {x_TableName_ie_%If(*==(0,%/(Subatt('KeyType,3,4),10))) {*Concat(0,*Subatt('KeyType,3,4))} %else {Subatt('KeyType,3,4)}}
+}
